@@ -12,4 +12,7 @@ simulation, SVA/formal verification, and on-board validation.
 
 ## Status
 
-M0 (specification and design decisions) in progress.
+![M0](https://img.shields.io/badge/M0_spec-in_progress-yellow)
+![M1](https://img.shields.io/badge/M1_RTL-pending-lightgrey)
+![M2](https://img.shields.io/badge/M2_formal-pending-lightgrey)
+![M3](https://img.shields.io/badge/M3_FPGA-pending-lightgrey)
