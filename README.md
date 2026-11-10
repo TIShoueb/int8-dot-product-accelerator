@@ -12,7 +12,17 @@ simulation, SVA/formal verification, and on-board validation.
 
 ## Status
 
-![M0](https://img.shields.io/badge/M0_spec-in_progress-yellow)
-![M1](https://img.shields.io/badge/M1_RTL-pending-lightgrey)
+![M0](https://img.shields.io/badge/M0_spec-done-brightgreen)
+![M1](https://img.shields.io/badge/M1_RTL-in_progress-yellow)
 ![M2](https://img.shields.io/badge/M2_formal-pending-lightgrey)
 ![M3](https://img.shields.io/badge/M3_FPGA-pending-lightgrey)
+
+
+## Specification
+
+The approved specification is in [`docs/spec/m0_spec.pdf`](docs/spec/m0_spec.pdf). Key points:
+
+- Four-beat AXI4-Stream-style ready/valid input: one signed 8-bit (a, b) pair per beat
+- One shared multiplier, 18-bit accumulator, 20-bit signed result
+- Latency: 1 cycle after the 4th pair; job period: 5 cycles
+- Synchronous reset; discards any job in progress
