@@ -26,3 +26,13 @@ The approved specification is in [`docs/spec/m0_spec.pdf`](docs/spec/m0_spec.pdf
 - One shared multiplier, 18-bit accumulator, 20-bit signed result
 - Latency: 1 cycle after the 4th pair; job period: 5 cycles
 - Synchronous reset; discards any job in progress
+
+
+## RTL Structure
+
+| File | Purpose |
+|---|---|
+| `rtl/mac_pkg.sv` | Shared widths and FSM state type |
+| `rtl/mac_controlpath.sv` | Handshakes, beat counter, ACCUMULATE/HOLD FSM |
+| `rtl/mac_datapath.sv` | Signed 8×8 multiply, 18-bit accumulator, sign extension to 20 bits |
+| `rtl/mac_top.sv` | Connects control path and datapath |
