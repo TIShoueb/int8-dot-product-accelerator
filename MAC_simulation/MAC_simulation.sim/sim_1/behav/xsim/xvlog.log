@@ -1,0 +1,24 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_pkg.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_controlpath
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'clk' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv:6]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'rst' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv:7]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'in_valid' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv:8]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'out_ready' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv:10]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_datapath
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'clk' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv:5]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'acc_clr' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv:6]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'acc_en' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv:7]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'in_a' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv:8]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'in_b' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv:9]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_top
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'clk' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv:5]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'rst' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv:6]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'in_valid' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv:7]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'out_ready' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv:9]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'in_a' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv:11]
+WARNING: [VRFC 10-1103] net type must be explicitly specified for 'in_b' when default_nettype is none [C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv:12]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/simulation_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simulation_tb

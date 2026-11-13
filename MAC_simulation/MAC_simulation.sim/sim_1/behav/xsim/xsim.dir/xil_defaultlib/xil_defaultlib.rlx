@@ -1,0 +1,10 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/MAC_simulation/MAC_simulation.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,uvm,,,,,,
+C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv,1794604013,systemVerilog,,C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv,,mac_controlpath,,uvm,,,,,,
+C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv,1794427566,systemVerilog,,C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv,,mac_datapath,,uvm,,,,,,
+C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_pkg.sv,1794603748,systemVerilog,C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv;C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_datapath.sv;C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv;C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/simulation_tb.sv,C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_controlpath.sv,,mac_pkg,,uvm,,,,,,
+C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/mac_top.sv,1794446883,systemVerilog,,C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/simulation_tb.sv,,mac_top,,uvm,,,,,,
+C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/rtl/simulation_tb.sv,1794610911,systemVerilog,,,,simulation_tb,,uvm,,,,,,

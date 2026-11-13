@@ -1,3 +1,5 @@
+`default_nettype none 
+
 module mac_controlpath
     import mac_pkg::*;
 (
@@ -66,3 +68,7 @@ always_ff @(posedge clk) begin
         cnt <= cnt_next;
     end
 end
+
+endmodule
+
+`default_nettype wire

@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../../rtl/mac_pkg.sv" \
+"../../../../../rtl/mac_controlpath.sv" \
+"../../../../../rtl/mac_datapath.sv" \
+"../../../../../rtl/mac_top.sv" \
+"../../../../../rtl/simulation_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

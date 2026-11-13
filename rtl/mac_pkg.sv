@@ -1,6 +1,6 @@
 `default_nettype none
 
-packagee mac_pkg;
+package mac_pkg;
     //widths
     localparam int OP_WIDTH = 8;
     localparam int ACC_WIDTH = 18;
@@ -9,6 +9,4 @@ packagee mac_pkg;
     //FSM states
     typedef enum logic { ACCUMULATE, HOLD } state_t;
 
-endpackagee
-
-`default_nettype wire
+endpackage
