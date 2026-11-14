@@ -1,3 +1,5 @@
+"test only functional correctness of the design with few corner cases "
+
 `timescale 1ns/1ps
 module simulation_tb;
     import mac_pkg::*;
@@ -36,18 +38,22 @@ module simulation_tb;
         end
         return sum;
     endfunction
-
+//======================================
+//   input/output tasks and comparison
+//======================================
     task automatic input_data_to_design(input int a, input int b);
         in_a <= a;
         in_b <= b;
         in_valid <= 1'b1;
-        do @(posedge clk); while (!in_ready);
+        #1
+        do @(negedge clk); while (!in_ready);
         in_valid <= 1'b0;
     endtask
 
     task automatic output_data_from_design(output int data);
         out_ready <= 1'b1;
-        do @(posedge clk); while (!out_valid);
+        #1
+        do @(negedge clk); while (!out_valid);
         data = out_data;
         out_ready <= 1'b0;
     endtask
@@ -72,6 +78,11 @@ module simulation_tb;
         compare_results(expected, actual);
         jobs++;
     endtask
+//======================================
+//======================================
+
+    // internal counter for input data
+    
 
     //test sequence
     initial begin

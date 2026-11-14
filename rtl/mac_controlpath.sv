@@ -26,12 +26,13 @@ always_comb begin
 
     case(state)
         ACCUMULATE: begin
-            if(in_valid && cnt<=3) begin
-                in_ready = 1'b1;
+            if(cnt<=3) begin
+                in_ready = !rst;
+                if(in_valid)
                 cnt_next = cnt + 1;
             end
             else if(cnt == 4) begin
-                out_valid = 1'b1;
+                out_valid = !rst;
                 if (out_ready) begin
                     cnt_next = 0;
                     next_state = ACCUMULATE;
@@ -43,7 +44,7 @@ always_comb begin
         end
 
         HOLD: begin
-            out_valid = 1'b1;
+            out_valid = !rst;
             if (out_ready) begin
                 cnt_next = 0;
                 next_state = ACCUMULATE;

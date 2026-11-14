@@ -1,0 +1,17 @@
+=== mac_checker report ===
+-- assertion failures (must all be 0) --
+P1a reset: no handshake      : 0
+P1b idle after reset         : 0
+P2a  output stable in stall   : 0
+P3a result after 4 pairs     : 0
+P3b no 5th pair              : 0
+P2b  no input while waiting   : 0
+LAT latency = 1 cycle        : 0
+LAT restart next cycle       : 0
+-- scenarios exercised (must be > 0) --
+results taken                : 127
+stall cycles                 : 255
+back-to-back restarts        : 43
+reset during a job (cycles)  : 1
+reset while holding (cycles) : 1
+gap within 4 consequitive inputs : 460

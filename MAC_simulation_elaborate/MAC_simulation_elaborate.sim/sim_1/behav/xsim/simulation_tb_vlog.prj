@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../../rtl/mac_pkg.sv" \
+"../../../../../verification/elaborate_simulation_testbench/mac_checker.sv" \
+"../../../../../rtl/mac_controlpath.sv" \
+"../../../../../rtl/mac_datapath.sv" \
+"../../../../../verification/elaborate_simulation_testbench/mac_driver_pkg.sv" \
+"../../../../../rtl/mac_top.sv" \
+"../../../../../verification/elaborate_simulation_testbench/mac_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
