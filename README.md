@@ -78,7 +78,9 @@ mid-job, and reset during a job. All reached.
 **Summary of Formal Verificaiton**
 Property Summary:
 <img width="820" height="333" alt="onespin_run_result" src="https://github.com/user-attachments/assets/026162c8-b5f6-4203-a37d-514d933ac575" />
+
 Coverage check Summary:
+
 <img width="734" height="327" alt="onespin_coverage_check" src="https://github.com/user-attachments/assets/4bcee10a-0660-4da0-a32c-ab89bc04491b" />
 
 
