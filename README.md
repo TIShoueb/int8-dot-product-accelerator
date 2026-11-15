@@ -79,7 +79,8 @@ mid-job, and reset during a job. All reached.
 
 Property Summary:
 
-<img width="820" height="266" alt="onespin_run_result" src="https://github.com/user-attachments/assets/9c7eedf3-f257-450d-be3c-e9a76cf60756" />
+<img width="1013" height="234" alt="onespin_run_result" src="https://github.com/user-attachments/assets/53f0ce46-4d63-4d6a-858b-3b344cab605f" />
+
 
 **NOTE:** property module name was wrong while checkign
 
