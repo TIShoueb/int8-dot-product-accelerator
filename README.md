@@ -76,7 +76,9 @@ mid-job, and reset during a job. All reached.
 **Assumption:** to get prof hold faster, can assume the source sends a new pair at least every n cycles.
 
 **Summary of Formal Verificaiton**
+
 Property Summary:
+
 <img width="820" height="266" alt="onespin_run_result" src="https://github.com/user-attachments/assets/9c7eedf3-f257-450d-be3c-e9a76cf60756" />
 
 Coverage check Summary:
