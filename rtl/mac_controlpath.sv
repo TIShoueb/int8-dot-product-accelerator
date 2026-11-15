@@ -49,27 +49,10 @@ always_comb begin
                 cnt_next = 0;
                 next_state = ACCUMULATE;
             end
-            else begin
-                next_state = HOLD;
-            end
         end
 
    endcase
 
 end
-
-
-always_ff @(posedge clk) begin
-    if(rst) begin
-        state <= ACCUMULATE;
-        cnt <= 0;
-    end
-    else begin
-        state <= next_state;
-        cnt <= cnt_next;
-    end
-end
-
-endmodule
 
 `default_nettype wire

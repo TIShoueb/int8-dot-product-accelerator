@@ -52,3 +52,24 @@ and a protocol checker (SVA, bound to `mac_top`).
 | Protocol assertions (reset, stall stability, 4-beat rule, latency) | all cycles | ✅ 0 violations |
 
 Evidence: `verification/results/results.csv`, `verification/results/checker_report.txt`
+
+
+## Formal Verification (M2)
+
+Properties are written in SVA (`verification/formal/fv_MAC.sv`), bound to `mac_top`,
+and proven with OneSpin.
+
+| Property | What it checks |
+|---|---|
+| `a_check_reset` | During reset, no handshake is possible; `out_data` is cleared one cycle later |
+| `a_system_after_reset` | After reset, the design is idle and ready (`in_ready = 1`, `out_valid = 0`) |
+| `a_out_valid_after_4_inputs` | `out_valid` rises exactly one cycle after the 4th accepted pair |
+| `a_out_valid_stable_until_out_ready` | While the receiver stalls, the result stays valid and unchanged |
+| `a_no_input_while_out_valid` | `in_ready` is always the opposite of `out_valid`: inputs are accepted only while collecting, never while a result is waiting |
+| `a_in_ready_after_out_fire` | After the result is taken, a new job starts in the next cycle |
+| `a_out_data_correctness` | `out_data` equals a₀·b₀ + a₁·b₁ + a₂·b₂ + a₃·b₃ of the job's accepted pairs |
+
+**Covers** (non-vacuity): output stall, a fast job (4 pairs in a row then the result), input gaps
+mid-job, and reset during a job. All reached.
+
+**Assumption:** the source keeps `in_valid`, `in_a` and `in_b` stable until the pair is accepted.
