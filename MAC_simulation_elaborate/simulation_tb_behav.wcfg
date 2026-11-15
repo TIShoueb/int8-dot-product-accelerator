@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="simulation_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="mac_pkg" />
+            <top_module name="mac_pkg_tb" />
+            <top_module name="simulation_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="21.300000 us"></ZoomEndTime>
+      <Cursor1Time time="21.300000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="233"></NameColumnWidth>
+      <ValueColumnWidth column_width="121"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/simulation_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/in_valid" type="logic">
+      <obj_property name="ElementShortName">in_valid</obj_property>
+      <obj_property name="ObjectShortName">in_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/in_ready" type="logic">
+      <obj_property name="ElementShortName">in_ready</obj_property>
+      <obj_property name="ObjectShortName">in_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/out_ready" type="logic">
+      <obj_property name="ElementShortName">out_ready</obj_property>
+      <obj_property name="ObjectShortName">out_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/out_valid" type="logic">
+      <obj_property name="ElementShortName">out_valid</obj_property>
+      <obj_property name="ObjectShortName">out_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/in_a" type="array">
+      <obj_property name="ElementShortName">in_a[7:0]</obj_property>
+      <obj_property name="ObjectShortName">in_a[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/in_b" type="array">
+      <obj_property name="ElementShortName">in_b[7:0]</obj_property>
+      <obj_property name="ObjectShortName">in_b[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/out_data" type="array">
+      <obj_property name="ElementShortName">out_data[19:0]</obj_property>
+      <obj_property name="ObjectShortName">out_data[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/errors" type="array">
+      <obj_property name="ElementShortName">errors[31:0]</obj_property>
+      <obj_property name="ObjectShortName">errors[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/jobs" type="array">
+      <obj_property name="ElementShortName">jobs[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jobs[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/fd" type="array">
+      <obj_property name="ElementShortName">fd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/clk_period" type="array">
+      <obj_property name="ElementShortName">clk_period[63:0]</obj_property>
+      <obj_property name="ObjectShortName">clk_period[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/N_RANDOM" type="array">
+      <obj_property name="ElementShortName">N_RANDOM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">N_RANDOM[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/N_BACK_TO_BACK" type="array">
+      <obj_property name="ElementShortName">N_BACK_TO_BACK[31:0]</obj_property>
+      <obj_property name="ObjectShortName">N_BACK_TO_BACK[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulation_tb/SETTLE" type="array">
+      <obj_property name="ElementShortName">SETTLE[63:0]</obj_property>
+      <obj_property name="ObjectShortName">SETTLE[63:0]</obj_property>
+   </wvobject>
+</wave_config>
