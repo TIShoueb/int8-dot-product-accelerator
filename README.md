@@ -13,7 +13,7 @@ simulation, SVA/formal verification, and on-board validation.
 ## Status
 
 ![M0](https://img.shields.io/badge/M0_spec-done-brightgreen)
-![M1](https://img.shields.io/badge/M1_RTL-in_progress-yellow)
+![M1](https://img.shields.io/badge/M1_RTL-in_done-brightgreen)
 ![M2](https://img.shields.io/badge/M2_formal-pending-lightgrey)
 ![M3](https://img.shields.io/badge/M3_FPGA-pending-lightgrey)
 
@@ -36,3 +36,19 @@ The approved specification is in [`docs/spec/m0_spec.pdf`](docs/spec/m0_spec.pdf
 | `rtl/mac_controlpath.sv` | Handshakes, beat counter, ACCUMULATE/HOLD FSM |
 | `rtl/mac_datapath.sv` | Signed 8×8 multiply, 18-bit accumulator, sign extension to 20 bits |
 | `rtl/mac_top.sv` | Connects control path and datapath |
+
+
+## Verification (M1: simulation)
+
+Self-checking testbench (Vivado xsim 2024.1) with an independent reference model
+and a protocol checker (SVA, bound to `mac_top`).
+
+| Test | Jobs | Result |
+|---|---|---|
+| Directed arithmetic (edge values, ±max) | 5 | ✅ |
+| Reset mid-job / reset while holding | 2 | ✅ |
+| Random jobs (operands, input gaps, output stalls) | 100 | ✅ |
+| Back-to-back jobs | 20 | ✅ |
+| Protocol assertions (reset, stall stability, 4-beat rule, latency) | all cycles | ✅ 0 violations |
+
+Evidence: `verification/results/results.csv`, `verification/results/checker_report.txt`
