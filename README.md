@@ -14,7 +14,7 @@ simulation, SVA/formal verification, and on-board validation.
 
 ![M0](https://img.shields.io/badge/M0_spec-done-brightgreen)
 ![M1](https://img.shields.io/badge/M1_RTL-in_done-brightgreen)
-![M2](https://img.shields.io/badge/M2_formal-pending-lightgrey)
+![M2](https://img.shields.io/badge/M2_formal-in_progress-yellow)
 ![M3](https://img.shields.io/badge/M3_FPGA-pending-lightgrey)
 
 
