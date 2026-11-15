@@ -72,4 +72,4 @@ and proven with OneSpin.
 **Covers** (non-vacuity): output stall, a fast job (4 pairs in a row then the result), input gaps
 mid-job, and reset during a job. All reached.
 
-**Assumption:** the source keeps `in_valid`, `in_a` and `in_b` stable until the pair is accepted.
+**Assumption:** to get prof hold faster, can assume the source sends a new pair at least every n cycles.
