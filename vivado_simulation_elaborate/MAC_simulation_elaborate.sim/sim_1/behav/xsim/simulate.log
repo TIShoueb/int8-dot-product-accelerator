@@ -1,8 +1,0 @@
-Time resolution is 1 ps
-T1: directed arithmetic
-T2: reset mid-job
-T3: reset while a result is waiting
-T4: 200 random jobs
-T8: 20 back-to-back jobs
-All 134 jobs passed
-$finish called at time : 15300 ns : File "C:/Users/toush/Desktop/emecs/self_project/int8-dot-product-accelerator/verification/elaborate_simulation_testbench/mac_tb.sv" Line 205

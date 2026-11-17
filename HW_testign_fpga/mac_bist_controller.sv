@@ -10,7 +10,6 @@
 //                       test MUST report FAIL (proves the test can fail).
 //           stall = 1 : holds out_ready low this cycle (random backpressure).
 //------------------------------------------------------------------------------
-`default_nettype none
 
 module mac_bist_controller
     import mac_pkg::*;
@@ -123,7 +122,6 @@ always_ff@(posedge clk) begin
                 end
             end
                 
-            end
             WAIT: begin
                 if(out_fire) begin
                     state <= CHECK;
@@ -147,6 +145,7 @@ always_ff@(posedge clk) begin
                 fail  <=  error;
                 state <= IDLE;                 // outcome stays in pass/fail until next start
             end
+            default : state <= IDLE;
         endcase
     end
 end

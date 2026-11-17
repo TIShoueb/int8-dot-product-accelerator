@@ -1,4 +1,4 @@
-`default_nettype none 
+
 module mac_datapath
     import mac_pkg::*;
 (

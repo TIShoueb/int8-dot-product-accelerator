@@ -1,4 +1,4 @@
-`default_nettype none
+
 
 package mac_pkg;
     //widths

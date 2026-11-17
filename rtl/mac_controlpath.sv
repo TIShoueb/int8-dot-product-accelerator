@@ -1,4 +1,3 @@
-`default_nettype none 
 
 module mac_controlpath
     import mac_pkg::*;
@@ -55,4 +54,14 @@ always_comb begin
 
 end
 
+always_ff @(posedge clk) begin
+    if (rst) begin
+        state <= ACCUMULATE;
+        cnt   <= '0;
+    end else begin
+        state <= next_state;
+        cnt   <= cnt_next;
+    end
+end
+endmodule
 `default_nettype wire

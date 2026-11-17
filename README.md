@@ -13,9 +13,10 @@ simulation, SVA/formal verification, and on-board validation.
 ## Status
 
 ![M0](https://img.shields.io/badge/M0_spec-done-brightgreen)
-![M1](https://img.shields.io/badge/M1_RTL-in_done-brightgreen)
+![M1](https://img.shields.io/badge/M1_RTL_%2B_sim-done-brightgreen)
 ![M2](https://img.shields.io/badge/M2_formal-done-brightgreen)
-![M3](https://img.shields.io/badge/M3_FPGA-in_progress-yellow)
+![M3](https://img.shields.io/badge/M3_FPGA-done-brightgreen)
+![Timing](https://img.shields.io/badge/100_MHz-met-blue)
 
 
 ## Specification
@@ -28,6 +29,18 @@ The approved specification is in [`docs/spec/m0_spec.pdf`](docs/spec/m0_spec.pdf
 - Synchronous reset; discards any job in progress
 
 
+## Repository Structure
+
+| Path | Content |
+|---|---|
+| `docs/` | Client brief and approved specification |
+| `rtl/` | Accelerator RTL |
+| `verification/elaborate_simulation_testbench/` | Self-checking testbench, reference model, SVA checker, results |
+| `verification/formal_verificaiton/` | Formal properties (OneSpin) and result screenshots |
+| `coverage_quantify_result/` | OneSpin coverage (quantify) report |
+| `HW_testign_fpga/` | On-board BIST, board top level, constraints, test vectors, reports |
+
+
 ## RTL Structure
 
 | File | Purpose |
@@ -38,7 +51,7 @@ The approved specification is in [`docs/spec/m0_spec.pdf`](docs/spec/m0_spec.pdf
 | `rtl/mac_top.sv` | Connects control path and datapath |
 
 
-## Verification (M1: simulation)
+## Verification (M1: Simulation)
 
 Self-checking testbench (Vivado xsim 2024.1) with an independent reference model
 and a protocol checker (SVA, bound to `mac_top`).
@@ -51,14 +64,13 @@ and a protocol checker (SVA, bound to `mac_top`).
 | Back-to-back jobs | 20 | ✅ |
 | Protocol assertions (reset, stall stability, 4-beat rule, latency) | all cycles | ✅ 0 violations |
 
-Evidence: `verification/results/results.csv`, `verification/results/checker_report.txt`
+Evidence: `verification/elaborate_simulation_testbench/results/` (`results.csv`, `checker_report.txt`)
 
 
 ## Formal Verification (M2)
 
-Properties are written in SVA (`verification/formal_verification/fv_MAC.sv`), bound to `mac_top`,
-and proven with OneSpin. Result summary is also saved in same directory
-
+Properties are written in SVA (`verification/formal_verificaiton/fv_MAC.sv`), bound to `mac_top`,
+and proven with OneSpin.
 
 | Property | What it checks |
 |---|---|
@@ -73,19 +85,79 @@ and proven with OneSpin. Result summary is also saved in same directory
 **Covers** (non-vacuity): output stall, a fast job (4 pairs in a row then the result), input gaps
 mid-job, and reset during a job. All reached.
 
-**Assumption:** to get prof hold faster, can assume the source sends a new pair at least every n cycles.
+**Assumption:** to get proofs faster, the source can be assumed to send a new pair at least every n cycles.
 
-**Summary of Formal Verificaiton**
-
-Property Summary:
+**Property summary:**
 
 <img width="1013" height="234" alt="onespin_run_result" src="https://github.com/user-attachments/assets/53f0ce46-4d63-4d6a-858b-3b344cab605f" />
 
-
-Coverage check Summary:
+**Coverage check summary:**
 
 <img width="812" height="171" alt="onespin_coverage_check" src="https://github.com/user-attachments/assets/dd39c58e-c9b8-4211-9fd5-a1e8a94073e4" />
 
 
+## FPGA Implementation (M3)
+
+The accelerator is tested on the board by a **built-in self-test (BIST)**. A ROM holds
+64 test jobs with their expected results. The BIST sends each job to `mac_top` through
+the same ready/valid handshake, compares every result, and shows PASS or FAIL on an LED.
+
+```
+            ┌──────────────── fpga_top ─────────────────┐
+ BTNC ──sync+edge──▶ start                               │
+ SW0  ──sync──────▶ fault     ┌──────────┐  in_*   ┌─────────┐
+ SW1  ──sync──▶ LFSR ▶ stall  │   BIST   │────────▶│ mac_top │
+ CPU_RESETN ─sync─▶ rst       │ + ROM    │◀────────│  (DUT)  │
+                              └──────────┘  out_*  └─────────┘
+                                 │ pass / fail / busy
+                                 ▼
+                            LED16 (RGB)
+```
+
+| File | Purpose |
+|---|---|
+| `HW_testign_fpga/script/gen_vector.py` | Generates `vectors.mem`: 6 directed edge cases + 58 random jobs, with expected results |
+| `HW_testign_fpga/vectors.mem` | ROM contents (84 bits per job: 4 pairs + 20-bit expected result) |
+| `HW_testign_fpga/mac_rom.sv` | ROM loaded with `$readmemh` |
+| `HW_testign_fpga/mac_bist_controller.sv` | BIST FSM (IDLE → SEND → WAIT → CHECK → DONE), comparator, fault injection |
+| `HW_testign_fpga/fpga_top.sv` | Board wrapper: reset/button/switch synchronizers, start edge detect, LFSR, LEDs |
+| `HW_testign_fpga/nexys_a7.xdc` | Pin assignment and 100 MHz clock constraint |
+| `HW_testign_fpga/tb_mac_bist.sv`, `tb_top.sv` | Simulation of the BIST and of the full board design |
+
+### Board Controls
+
+| Control | Function |
+|---|---|
+| CPU_RESET | Reset |
+| BTNC | Start a BIST run (64 jobs) |
+| SW0 | Fault injection: corrupts one expected value, so the BIST must report FAIL |
+| SW1 | Random output stalls (LFSR-driven `out_ready` backpressure) |
+| LED16 green / red / blue | PASS / FAIL / busy |
+
+### Results
+
+| Check | Result |
+|---|---|
+| Simulation (`tb_top`): normal, fault, stalls, fault + stalls | ✅ green / red / green / red |
+| Timing @ 100 MHz | ✅ WNS +0.479 ns, WHS +0.131 ns, 0 failing endpoints |
+| Utilization (incl. BIST) | 245 LUT (0.39%), 79 FF (0.06%), 0 DSP, 0 BRAM, 8 IO |
+| Power (vectorless estimate) | 0.101 W total (0.003 W dynamic) |
+| On-board test | ✅ green / red / green / red |
+
+Critical path: BIST job counter → ROM → pair mux → multiplier → accumulator (9.48 ns).
+Reports: `HW_testign_fpga/reports/`
+
+### Build
+
+1. Create a Vivado project for `xc7a100tcsg324-1`.
+2. Add `rtl/*.sv` and `HW_testign_fpga/*.sv` (except testbenches) plus `vectors.mem` as design sources.
+3. Add `nexys_a7.xdc` as a constraint; set `fpga_top` as top.
+4. Run synthesis, implementation and bitstream generation, then program the board.
+
+The bitstream is attached to the `m3` release.
 
 
+## Future Work
+
+- Manual mode: enter operands with switches and show the result on the 7-segment display (muxed into `fpga_top`)
+- Register `in_a`/`in_b` to shorten the critical path and add timing margin

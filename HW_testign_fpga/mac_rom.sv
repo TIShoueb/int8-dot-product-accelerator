@@ -1,4 +1,4 @@
-`default_nettype none
+
 module mac_rom #(
     parameter int N_JOBS = 64,
     parameter int WORD_W = 84,
