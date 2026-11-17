@@ -10,7 +10,7 @@ module mac_datapath
     output logic signed [OUT_WIDTH-1:0] out_data
 );
 
-logic signed [ACC_WIDTH-1 :0]        acc;
+(* use_dsp = "yes" *) logic signed [ACC_WIDTH-1:0] acc;   //to force vivado to use DSP for multiplication and addition,
 assign out_data = {{(OUT_WIDTH-ACC_WIDTH){acc[ACC_WIDTH-1]}}, acc};
 
 
