@@ -147,6 +147,9 @@ the same ready/valid handshake, compares every result, and shows PASS or FAIL on
 Critical path: BIST job counter → ROM → pair mux → multiplier → accumulator (9.48 ns).
 Reports: `HW_testign_fpga/reports/`
 
+**DSP usage:** Vivado implemented the small 8×8 signed multiplier in LUTs and carry chains (0 DSP), since its synthesis heuristics found this cheap enough at 100 MHz.
+DSP mapping can be forced with the `(* use_dsp = "yes" *)` attribute in `mac_datapath.sv`, which would also be the first step if more timing margin is needed.
+
 ### Build
 
 1. Create a Vivado project for `xc7a100tcsg324-1`.
